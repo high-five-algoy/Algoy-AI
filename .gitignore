@@ -178,3 +178,6 @@ src/main/resources/application-local.yml
 # End of https://www.toptal.com/developers/gitignore/api/gradle,java,intellij
 메모
 하이라이트
+
+docs/
+
