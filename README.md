@@ -1,6 +1,5 @@
-
-
 # Algoy-AI 
+Web과 외부 AI API 사이의 추천 adapter 서비스
 
 ## 프로젝트 소개
 
@@ -140,17 +139,6 @@ src/main/java/com/example/algoyai
 
 ## 데이터 구조
 
-### Redis (Web 서버)
-
-| Key Pattern | Type | Value | TTL | 역할                  |
-| --- | --- | --- | --- |---------------------|
-| `recommendation:active:{userEmail}` | List | 화면에 즉시 보여줄 추천 문제 목록 | 12시간 | 홈 요청 데이터 순차 노출      |
-| `recommendation:seen:{userEmail}` | Set | 이미 추천 세트에 포함한 문제 번호 | 30일 | 중복 추천 방지            |
-| `recommendation:refresh-lock:{userEmail}` | String | `"1"` | 2분 | 같은 사용자 중복 추천 문제 갱신 방지 |
-
-### ERD (Web 서버)
-![algoy erd](assets/img/erd.png)
-
 ### MongoDB (AI 서버)
 
 | Collection | 주요 필드 | 역할 |
@@ -181,27 +169,18 @@ src/main/java/com/example/algoyai
 </details> 
 
 
-## UI 설계
-
-- 전체 Figma: [Algoy UI Design](https://www.figma.com/design/cFtdGffRUuFPeJqK6kcBUc/Algoy?node-id=0-1&node-type=canvas&t=jG8aeeZxixqGCodM-0)
-
 ## 기술 스택
-제가 사용한 기술 스택 위주로 작성했습니다.
+사용한 기술 스택 위주로 작성했습니다.
 
 <h4 align="center">Backend</h4>
   <p align="center">                                                                                                                                                                
     <img src="https://img.shields.io/badge/Java%2017-007396?style=for-the-badge&logo=openjdk&logoColor=white">                                                                      
-    <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">                                                               
-    <img src="https://img.shields.io/badge/Spring%20Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">                                                       
-    <img src="https://img.shields.io/badge/JPA-59666C?style=for-the-badge">                                                                                                         
+    <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">                                                                
   </p>  
 
 
 <h4 align="center">Database / Storage</h4>
-  <p align="center">                                                                                                                                                                
-    <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white">                                                                            
-    <img src="https://img.shields.io/badge/StringRedisTemplate-6DB33F?style=for-the-badge&logo=spring&logoColor=white">                                                             
-    <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+  <p align="center">
     <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white">
   </p> 
 
@@ -209,19 +188,12 @@ src/main/java/com/example/algoyai
   <p align="center">                                                                                                                                                                
     <img src="https://img.shields.io/badge/REST%20API-02569B?style=for-the-badge">                                                                                                  
     <img src="https://img.shields.io/badge/WebClient-6DB33F?style=for-the-badge&logo=spring&logoColor=white">                                                                       
-  </p> 
-
-<h4 align="center">Async / Performance</h4>
-  <p align="center">                                                                                                                                                                
-    <img src="https://img.shields.io/badge/Spring%20Async-6DB33F?style=for-the-badge&logo=spring&logoColor=white">                                                                  
-    <img src="https://img.shields.io/badge/ThreadPoolTaskExecutor-007396?style=for-the-badge&logo=openjdk&logoColor=white">                                                         
   </p>
 
 
 <h4 align="center">Infra / DevOps</h4>
   <p align="center">                                                                                                                                                                
-    <img src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">                                                                 
-    <img src="https://img.shields.io/badge/Amazon%20RDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white">                                                                 
+    <img src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">                                                                  
     <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">                                                                            
     <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white">                                                         
     <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">                                                                          
