@@ -1,7 +1,8 @@
-# Algoy-AI 
-Web과 외부 AI API 사이의 추천 adapter 서비스
+### 🔗 관련 레포지토리
+- Algoy-AI Repository (AI Server): [https://github.com/high-five-algoy/Algoy-AI.git](링크)
+- Algoy-Web Repository (Web Server): [https://github.com/high-five-algoy/Algoy-Web.git](링크)
 
-## 프로젝트 소개
+## ✨ 프로젝트 소개 (Algoy-AI)
 
 Algoy는 알고리즘 학습과 문제 추천을 지원하는 웹 서비스입니다. 사용자는 풀이 이력을 바탕으로 AI 추천을 받고, 학습 기록을 관리할 수 있습니다.
 
@@ -23,7 +24,40 @@ Algoy는 알고리즘 학습과 문제 추천을 지원하는 웹 서비스입�
     - Nginx 설정 및 서버 환경 구축
 
 
-## As-Is (1차 개발)
+## 📚 기술 스택
+사용한 기술 스택 위주로 작성했습니다.
+
+<h4 align="center">Backend</h4>
+  <p align="center">                                                                                                                                                                
+    <img src="https://img.shields.io/badge/Java%2017-007396?style=for-the-badge&logo=openjdk&logoColor=white">                                                                      
+    <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">                                                                
+  </p>  
+
+
+<h4 align="center">Database / Storage</h4>
+  <p align="center">
+    <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white">
+  </p> 
+
+<h4 align="center">API / Communication</h4>
+  <p align="center">
+    <img src="https://img.shields.io/badge/OpenAI%20API-412991?style=for-the-badge&logo=openai&logoColor=white">                                                                  
+    <img src="https://img.shields.io/badge/solved.ac%20API-17CE3A?style=for-the-badge">   
+    <img src="https://img.shields.io/badge/REST%20API-02569B?style=for-the-badge">                                                                                                  
+    <img src="https://img.shields.io/badge/WebClient-6DB33F?style=for-the-badge&logo=spring&logoColor=white">                                                                       
+  </p>
+
+
+<h4 align="center">Infra / DevOps</h4>
+  <p align="center">                                                                                                                                                                
+    <img src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">                                                                  
+    <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">                                                                            
+    <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white">                                                         
+    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">                                                                          
+  </p>
+
+
+## ⬅️ As-Is (1차 개발)
 
 solved.ac(API) 사용자 풀이 이력을 조회한 뒤, 이를 Allen AI API에 전달할 프롬프트로 가공해 문제를 추천하는 구조였습니다.
 
@@ -34,7 +68,7 @@ solved.ac(API) 사용자 풀이 이력을 조회한 뒤, 이를 Allen AI API에 
 
 
 
-## 문제 상황
+## ⚠️ 문제 상황
 
 - 기존 추천 기능은 특정 외부 AI 서비스에 의존하고 있었고, 해당 서비스 종료로 인해 추천 기능을 다른 LLM API 기반으로 전환해야 했습니다.
 - 기존 방식은 연동 과정에서 일부 요청이 안정적으로 처리되지 않는 문제가 있었습니다. 또한 1차 개발에서는 외부 API 호출 방식이
@@ -42,34 +76,35 @@ solved.ac(API) 사용자 풀이 이력을 조회한 뒤, 이를 Allen AI API에 
 - 1차 개발의 문자열 응답 방식은 추천 결과의 저장과 후속 활용에 한계가 있어, 추천 이력 관리와 기능 확장을 위해 구조화된 응답 형태로 바꿀 필요가 있었습니다.
 
 
-## To-Be (2차 개발)
+## ➡️ To-Be (2차 개발)
 
-### 해결 방식
+### 💡 해결 방식
 중단된 기존 AI 추천 연동을 OpenAI 기반으로 교체하고, 단순 문자열 응답에 머물던 추천 기능을 구조화된 데이터 흐름으로 확장했습니다.
 
 
-### 변경 내용
+### 💡 변경 내용
 - 외부 AI API 호출 방식을 OpenAI 규격에 맞게 재구성했습니다.
 - 추천 과정의 각 단계를 분리해 유지보수성과 확장성을 높였습니다.
 - 추천 결과를 JSON 형태로 구조화해 저장 및 후속 처리에 적합한 형태로 개선했습니다.
 - 추천 결과를 MongoDB에 적재할 수 있도록 연결해 추천 이력 관리 기반을 마련했습니다.
 
 
-## 성과
+## 📈 성과
 
 - 서비스 분리 아키텍처를 기반으로 추천 엔진 교체를 진행해, AI 기술 변경이 웹 서비스 전체 수정으로 번지지 않도록 구조적 유연성을 확보했습니다.
 - 특정 LLM 제공자에 종속적인 추천 기능을 교체 가능한 구조로 전환해 운영 지속성과 확장성을 높였습니다.
 - 문자열 응답 중심 추천 기능을 구조화된 추천 데이터 흐름으로 확장해 저장, 관리, 재활용이 가능한 형태로 고도화했습니다.
 
 
-## 배운 점
+## 💭 배운 점
 
 - 특정 AI 제공자에 강하게 의존하는 구조는 서비스 종료나 규격 변경에 취약할 수 있어, 교체 가능한 구조 설계가 중요하다는 점을 배웠습니다.
 - 서비스 분리 아키텍처는 기술 변경의 영향을 국소화하고, 추천 엔진 교체를 더 유연하게 만든다는 점을 확인했습니다
 - 문자열 응답 중심 구현은 확장에 한계가 있어, 저장과 후속 활용을 고려한 구조화된 응답 설계가 필요하다는 점을 체감했습니다.
 
 
-## 아키텍처 구조
+## ⚙️ 아키텍처 구조
+- Web은 내부 AI API만 호출하고, AI가 외부 OpenAI/solved.ac 의존성을 캡슐화합니다.
 - Web 애플리케이션과 AI 애플리케이션을 분리 배포해 서비스 간 결합도를 낮추고 운영 안정성을 높였습니다.
 - 1차는 Allen AI 기반 추천 API 중심 구조였고, 2차는 OpenAI 기반 추천 구조로 변경했습니다.
 
@@ -86,7 +121,7 @@ solved.ac(API) 사용자 풀이 이력을 조회한 뒤, 이를 Allen AI API에 
 
 
 
-## 프로젝트 구조
+## 🗂️ 프로젝트 구조
 제가 구현한 AI 문제 추천 기능 중심의 패키지와 클래스만 정리했습니다.
 
 ```plaintext                                                                                                                                                               
@@ -137,7 +172,7 @@ src/main/java/com/example/algoyai
    └─ application.yml                            # MongoDB, Allen AI, OpenAI, solved.ac 연동 설정
 ```
 
-## 데이터 구조
+## 📚 데이터 구조
 
 ### MongoDB (AI 서버)
 
@@ -168,33 +203,3 @@ src/main/java/com/example/algoyai
   ```       
 </details> 
 
-
-## 기술 스택
-사용한 기술 스택 위주로 작성했습니다.
-
-<h4 align="center">Backend</h4>
-  <p align="center">                                                                                                                                                                
-    <img src="https://img.shields.io/badge/Java%2017-007396?style=for-the-badge&logo=openjdk&logoColor=white">                                                                      
-    <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">                                                                
-  </p>  
-
-
-<h4 align="center">Database / Storage</h4>
-  <p align="center">
-    <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white">
-  </p> 
-
-<h4 align="center">API / Communication</h4>
-  <p align="center">                                                                                                                                                                
-    <img src="https://img.shields.io/badge/REST%20API-02569B?style=for-the-badge">                                                                                                  
-    <img src="https://img.shields.io/badge/WebClient-6DB33F?style=for-the-badge&logo=spring&logoColor=white">                                                                       
-  </p>
-
-
-<h4 align="center">Infra / DevOps</h4>
-  <p align="center">                                                                                                                                                                
-    <img src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">                                                                  
-    <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">                                                                            
-    <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white">                                                         
-    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">                                                                          
-  </p>
