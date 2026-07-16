@@ -1,6 +1,6 @@
-package com.example.algoyai.service.solvedac;
+package com.example.algoyai.service.allenai;
 
-import com.example.algoyai.model.dto.solvedac.SolvedACResponse;
+import com.example.algoyai.model.dto.allenai.SolvedACResponseDto;
 import com.example.algoyai.repository.solvedac.AllenRepository;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -99,14 +99,14 @@ public class AllenApiService {
         Gson gson = new Gson();
 
         //Json을 SolvedACResponse 객체로 파싱
-        SolvedACResponse response = gson.fromJson(jsonResponse, SolvedACResponse.class);
+        SolvedACResponseDto response = gson.fromJson(jsonResponse, SolvedACResponseDto.class);
 
         //결과를 담을 스트링 생성
         String solvedTitles = "";
         //문제 번호를 담을 스트링 생성
         String solvedProblemId = "";
         //items 배열의 각 요소에서 titles의 title 값을 추출
-        for (SolvedACResponse.Item item : response.getItems()){
+        for (SolvedACResponseDto.Item item : response.getItems()){
             if(item.getProblemId() != null){
                 //System.out.println("probelId: " + item.getProblemId());
                 solvedProblemId += item.getProblemId();

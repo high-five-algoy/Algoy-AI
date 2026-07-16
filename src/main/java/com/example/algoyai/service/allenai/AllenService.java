@@ -1,6 +1,6 @@
-package com.example.algoyai.service.solvedac;
+package com.example.algoyai.service.allenai;
 
-import com.example.algoyai.model.dto.solvedac.QuizRecommendDto;
+import com.example.algoyai.model.dto.allenai.QuizRecommendDto;
 import com.example.algoyai.model.entity.solvedac.QuizRecommend;
 import com.example.algoyai.repository.solvedac.AllenRepository;
 import org.springframework.beans.factory.annotation.Autowired;

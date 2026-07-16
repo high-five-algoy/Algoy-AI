@@ -1,12 +1,25 @@
-package com.example.algoyai.model.dto.solvedac;
+package com.example.algoyai.model.dto.allenai;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
+
+/**
+ * solved.ac 문제 조회 API의 JSON 응답을 매핑하는 DTO.
+ *
+ * 기존 Allen 추천 로직에서 solved.ac 응답의 count, items,
+ * problemId, titleKo, titles 정보를 파싱하기 위해 사용된다.
+ *
+ * 주로 문제 번호와 제목 정보를 추출해 추천 요청용 문자열을 만드는 데 사용된다.
+ *
+ * @author 조아라
+ * @since 2026.04
+ */
+
 //데이터베이스와 상관없는 Json 파싱을 위한 클래스 구현입니다
 //JSON 구조를 반영한 Java 클래스 생성
 //items -> titles -> title 최종 추출하여 리스트 생성
-public class SolvedACResponse {
+public class SolvedACResponseDto {
     //문제수(전체 원소 수)
     @SerializedName("count")
     private int count;

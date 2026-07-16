@@ -1,7 +1,7 @@
-package com.example.algoyai.controller.solvedac;
+package com.example.algoyai.controller.allenai;
 
-import com.example.algoyai.service.solvedac.AllenApiService;
-import com.example.algoyai.service.solvedac.AllenService;
+import com.example.algoyai.service.allenai.AllenApiService;
+import com.example.algoyai.service.allenai.AllenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -28,6 +28,13 @@ public class AllenController {
         this.allenService = allenService;
     }
 
+    /**
+     * Allen AI API 를 사용하여 1개 문제 추천 받음(초기 코드)
+     *
+     * @author ARa Cho
+     * @return String
+     * MongoDB에 저장하는 로직 존재(사용안함)
+     */
     @GetMapping
     public ResponseEntity<String> allen(@RequestParam String algoyusername, String solvedacusername) throws Exception {
         //System.out.printf("controller check");
@@ -49,6 +56,14 @@ public class AllenController {
         }
 
     }
+
+    /**
+     * Allen AI API 를 사용하여 5개 문제 추천 받음(현재 코드)
+     *
+     * @author ARa Cho
+     * @return String
+     * MongoDB에 저장하는 로직 미존재
+     */
 
     @GetMapping("/response")
     public ResponseEntity<String> fivereponse(@RequestParam String algoyusername, String solvedacusername) throws Exception {

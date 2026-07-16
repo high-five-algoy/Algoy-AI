@@ -1,4 +1,4 @@
-package com.example.algoyai.service.solvedac;
+package com.example.algoyai.service.allenai;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

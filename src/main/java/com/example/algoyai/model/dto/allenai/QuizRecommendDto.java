@@ -1,4 +1,4 @@
-package com.example.algoyai.model.dto.solvedac;
+package com.example.algoyai.model.dto.allenai;
 
 import com.example.algoyai.model.entity.solvedac.QuizRecommend;
 import lombok.*;
